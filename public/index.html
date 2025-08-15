@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Website</title>
+</head>
+<body>
+    <h1>Enter Something</h1>
+    <input id="textInput" type="text" placeholder="Type here..." />
+    <button onclick="sendData()">Submit</button>
+
+    <script>
+        async function sendData() {
+            const value = document.getElementById('textInput').value;
+            await fetch('/save', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: value })
+            });
+            alert("Saved!");
+        }
+    </script>
+</body>
+</html>
